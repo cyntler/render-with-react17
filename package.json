@@ -1,0 +1,29 @@
+{
+  "name": "render-with-react17",
+  "version": "0.1.0",
+  "description": "A simple util component to render components incompatible with React 18.x.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Damian Cyntler",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyntler/render-with-react17.git"
+  },
+  "scripts": {
+    "start": "rimraf ./dist && tsc --watch",
+    "build": "rimraf ./dist && tsc",
+    "prettier": "prettier --check ./src"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  }
+}
