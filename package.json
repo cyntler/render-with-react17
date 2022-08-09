@@ -2,6 +2,13 @@
   "name": "render-with-react17",
   "version": "0.1.0",
   "description": "A simple util component to render components incompatible with React 18.x.",
+  "keywords": [
+    "react",
+    "react-library",
+    "react-component",
+    "react-renderer",
+    "react17"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Damian Cyntler",
