@@ -21,7 +21,7 @@
     "start": "rimraf ./dist && tsc --watch",
     "build": "rimraf ./dist && tsc",
     "prettier": "prettier --check ./src",
-    "release": "release-it"
+    "release": "npm run build && release-it"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
