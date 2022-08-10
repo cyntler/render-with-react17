@@ -1,6 +1,6 @@
 {
   "name": "render-with-react17",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A simple util component to render components incompatible with React 18.x.",
   "keywords": [
     "react",
