@@ -39,7 +39,7 @@ export const RenderWithReact17: FunctionComponent<
         unmountComponentAtNode(divElement);
       }
     };
-  }, []);
+  }, [children]);
 
   return (
     <div id={`RenderWithReact17-${RenderWithReact17Counter}`} ref={divRef} />
