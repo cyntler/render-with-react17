@@ -13,18 +13,22 @@ export interface RenderWithReact17Props {
   wrapper?: ComponentType<PropsWithChildren>;
 }
 
-let RenderWithReact17Counter = 0;
+let renderWithReact17Counter = 0;
 
 export const RenderWithReact17: FunctionComponent<
   PropsWithChildren<RenderWithReact17Props>
 > = memo(({ children, wrapper: Wrapper }) => {
+  const numOfComponentRendered = useRef(
+    renderWithReact17Counter === 1
+      ? renderWithReact17Counter++
+      : renderWithReact17Counter++ - 1
+  );
   const divRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const divElement = divRef.current;
 
     if (divElement && children) {
-      RenderWithReact17Counter++;
       const node = Wrapper ? <Wrapper>{children}</Wrapper> : children;
       if (typeof render === 'function') {
         mockConsole();
@@ -32,16 +36,21 @@ export const RenderWithReact17: FunctionComponent<
         unmockConsole();
       }
     }
-
-    return () => {
-      RenderWithReact17Counter--;
-      if (typeof unmountComponentAtNode === 'function') {
-        unmountComponentAtNode(divElement);
-      }
-    };
   }, [children]);
 
+  useEffect(
+    () => () => {
+      if (divRef.current && typeof unmountComponentAtNode === 'function') {
+        unmountComponentAtNode(divRef.current);
+      }
+    },
+    []
+  );
+
   return (
-    <div id={`RenderWithReact17-${RenderWithReact17Counter}`} ref={divRef} />
+    <div
+      id={`RenderWithReact17-${numOfComponentRendered.current}`}
+      ref={divRef}
+    />
   );
 });
