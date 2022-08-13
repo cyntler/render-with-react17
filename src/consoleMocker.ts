@@ -7,9 +7,7 @@ export const mockConsole = () => {
 
   window.console = {
     ...window.console,
-    error: () => {
-      return false;
-    },
+    error: () => false,
   };
 };
 
