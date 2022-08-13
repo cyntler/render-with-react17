@@ -20,12 +20,16 @@
   "scripts": {
     "start": "rimraf ./dist && tsc --watch",
     "build": "rimraf ./dist && tsc",
+    "lint": "eslint ./src",
     "prettier": "prettier --check ./src",
     "release": "npm run build && release-it"
   },
   "devDependencies": {
+    "@cyntler/eslint-config": "^0.0.3",
+    "@rushstack/eslint-patch": "^1.1.4",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "eslint": "^8.21.0",
     "prettier": "^2.7.1",
     "release-it": "^15.3.0",
     "rimraf": "^3.0.2",

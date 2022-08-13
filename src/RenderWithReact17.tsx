@@ -36,7 +36,7 @@ export const RenderWithReact17: FunctionComponent<
         unmockConsole();
       }
     }
-  }, [children]);
+  }, [children, Wrapper]);
 
   useEffect(
     () => () => {
