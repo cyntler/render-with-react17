@@ -23,7 +23,7 @@
     "lint": "eslint ./src",
     "prettier": "prettier --check ./src",
     "test": "jest",
-    "release": "npm run lint && npm run prettier && npm run build && release-it"
+    "release": "npm run lint && npm run test && npm run prettier && npm run build && release-it"
   },
   "devDependencies": {
     "@cyntler/eslint-config": "^0.0.3",
