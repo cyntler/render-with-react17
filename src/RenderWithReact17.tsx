@@ -1,9 +1,11 @@
-import React, {
+import {
   ComponentType,
   FunctionComponent,
   memo,
   PropsWithChildren,
+  StrictMode,
   useEffect,
+  useMemo,
   useRef,
 } from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
@@ -11,28 +13,35 @@ import { mockConsole, unmockConsole } from './consoleMocker';
 
 export interface RenderWithReact17Props {
   wrapper?: ComponentType<PropsWithChildren>;
+  className?: string;
 }
 
 let renderWithReact17Counter = 0;
 
 export const RenderWithReact17: FunctionComponent<
   PropsWithChildren<RenderWithReact17Props>
-> = memo(({ children, wrapper: Wrapper }) => {
-  const numOfComponentRendered = useRef(
-    renderWithReact17Counter === 1
-      ? renderWithReact17Counter++
-      : renderWithReact17Counter++ - 1
-  );
+> = memo(({ children, wrapper: Wrapper, className }) => {
+  const numOfComponentRendered = useMemo(() => {
+    renderWithReact17Counter++;
+    return renderWithReact17Counter;
+  }, []);
   const divRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const divElement = divRef.current;
 
     if (divElement && children) {
-      const node = Wrapper ? <Wrapper>{children}</Wrapper> : children;
       if (typeof render === 'function') {
+        const node = Wrapper ? <Wrapper>{children}</Wrapper> : children;
         mockConsole();
-        render(<React.StrictMode>{node}</React.StrictMode>, divElement);
+        render(
+          process.env.NODE_ENV !== 'development' ? (
+            <StrictMode>{node}</StrictMode>
+          ) : (
+            <>{node}</>
+          ),
+          divElement
+        );
         unmockConsole();
       }
     }
@@ -40,6 +49,7 @@ export const RenderWithReact17: FunctionComponent<
 
   useEffect(
     () => () => {
+      renderWithReact17Counter--;
       if (divRef.current && typeof unmountComponentAtNode === 'function') {
         unmountComponentAtNode(divRef.current);
       }
@@ -47,10 +57,7 @@ export const RenderWithReact17: FunctionComponent<
     []
   );
 
-  return (
-    <div
-      id={`RenderWithReact17-${numOfComponentRendered.current}`}
-      ref={divRef}
-    />
-  );
+  const id = `RenderWithReact17-${numOfComponentRendered}`;
+
+  return <div className={className} id={id} data-testid={id} ref={divRef} />;
 });
