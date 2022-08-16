@@ -5,5 +5,6 @@ module.exports = {
   parserOptions: { tsconfigRootDir: __dirname },
   rules: {
     'no-plusplus': 0,
+    'react/jsx-no-useless-fragment': 0,
   },
 };
