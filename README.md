@@ -25,13 +25,13 @@ yarn add render-with-react17
 
 The first step is to import the component:
 
-```tsx
+```jsx
 import { RenderWithReact17 } from 'render-with-react17';
 ```
 
 Then move the rendering of the component that does not work inside the node `RenderWithReact17`.
 
-```tsx
+```jsx
 const Component = () => (
   <RenderWithReact17>
     <NotWorkingComponent />
