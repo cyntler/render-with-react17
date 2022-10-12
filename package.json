@@ -9,8 +9,8 @@
     "react-renderer",
     "react17"
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "author": "Damian Cyntler",
   "license": "MIT",
   "repository": {
@@ -27,19 +27,19 @@
   },
   "devDependencies": {
     "@cyntler/eslint-config": "^0.0.3",
-    "@rushstack/eslint-patch": "^1.1.4",
-    "@testing-library/react": "^13.3.0",
-    "@types/jest": "^28.1.6",
-    "@types/react": "^18.0.17",
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@testing-library/react": "^13.4.0",
+    "@types/jest": "^29.1.2",
+    "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
-    "eslint": "^8.21.0",
-    "jest": "^28.1.3",
-    "jest-environment-jsdom": "^28.1.3",
+    "eslint": "^8.25.0",
+    "jest": "^29.1.2",
+    "jest-environment-jsdom": "^29.1.2",
     "prettier": "^2.7.1",
-    "release-it": "^15.3.0",
+    "release-it": "^15.5.0",
     "rimraf": "^3.0.2",
-    "ts-jest": "^28.0.8",
-    "typescript": "^4.7.4"
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.8.4"
   },
   "peerDependencies": {
     "react": ">=18",
